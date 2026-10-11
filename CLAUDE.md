@@ -26,6 +26,12 @@ Tripo/Meshy تُنتج مجسمًا واحدًا ملتصقًا (أصابع مل
 - دعم العربية في TTS غير مؤكد.
 - نحت الـ blendshapes وضبط skin weights يدويان.
 
+## ملاحظة Windows (مهمة)
+جهاز المستخدم Windows (`C:\Users\bensa\Downloads\youtube auto\3d-kids`). السكربتات هنا **bash + conda لنظام Linux** (وملف FBX2glTF لنظام Linux)، لذا تُشغَّل داخل **WSL2 (Ubuntu)** وليس PowerShell.
+- شغّل Claude Code من داخل WSL، واستنسخ المستودع في نظام ملفات WSL (`~/3d-kids`) لا في `/mnt/c/...` (أسرع وأقل مشاكل).
+- تأكد أن `nvidia-smi` داخل WSL يُظهر البطاقتين قبل أي تثبيت.
+- Blender يمكن تشغيله على Windows لتحرير الملفات؛ الخرجات في `outputs/` يمكن نسخها إليه.
+
 ## قواعد العمل
 - قبل أي شيء: `nvidia-smi` وتأكد من وجود بطاقتين؛ ولا تفترض أن البيئة تعمل.
 - لا تنسخ أرقام VRAM أو تراخيص من الذاكرة؛ تحقق من README/LICENSE في `third_party/<repo>`.
