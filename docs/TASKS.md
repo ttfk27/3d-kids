@@ -18,6 +18,10 @@
 - [ ] `bash scripts/run_parts.sh outputs/body_prep.png 6 girl_v1` ثم جرّب 4 و8 أجزاء.
 - [ ] قارن مع نتيجة Hunyuan3D: أيهما أنظف وأقرب لفصل (شعر/رأس/جسم/سالوبيت/حذاءان/يدان)؟
 
+## 2b. Pixal3D Multiview (ComfyUI، Windows مباشرة أو WSL) — انظر docs/PIXAL3D.md
+- [ ] حضّر 4 صور بروفايل حقيقية (أمام/يسار/خلف/يمين) من `body_apose_neutral.webp`، 1024×1024، خلفية مزالة.
+- [ ] نفّذ الـ workflow وقارن GLB مع Hunyuan3D وPartCrafter (أصابع، شعر، أجزاء).
+
 ## 3. Blender
 - [ ] ادمج/نظّف الأجزاء، سمِّ الرأس `Head`.
 - [ ] `blender file.blend --python blender/add_face_rig.py -- --head Head` ثم ضبط مواضع العينين والفم.
