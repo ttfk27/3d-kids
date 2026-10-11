@@ -1,0 +1,52 @@
+# mptpro configuration. Paths are relative to this file.
+
+channel:
+  name: "My Channel"
+  niche: "surprising science facts explained simply"
+  language: en            # narration + metadata language
+  tone: "curious, warm, concrete; no hype, no filler"
+  visual_style: "cinematic, soft natural light, detailed, 35mm film look"
+  made_for_kids: false    # set deliberately: YouTube treats made-for-kids videos very differently
+
+llm:                      # any OpenAI-compatible server; Ollama shown
+  base_url: "http://127.0.0.1:11434/v1"
+  model: "qwen2.5:14b-instruct"
+  api_key: "ollama"
+
+mpt:                      # MoneyPrinterTurbo (see scripts/setup.sh)
+  base_url: "http://127.0.0.1:8080"
+  voice_name: "kokoro:af_heart"     # kokoro:<voice> | chatterbox:<voice> | Edge voices like en-US-AriaNeural-Female
+  aspect: "9:16"                    # 9:16 Shorts | 16:9 long form
+  video_source: local               # local = AI clips from ComfyUI; pexels = MPT stock footage
+  # extra_params: {bgm_type: random} # raw passthrough to POST /api/v1/videos
+
+comfy:                    # one ComfyUI per GPU (scripts/comfy_dual.sh)
+  endpoints: ["http://127.0.0.1:8188", "http://127.0.0.1:8189"]
+  workflow: "workflows/video_api.json"   # see workflows/README.md
+  width: 480
+  height: 832
+  frames: 81
+  fps: 16
+  # reference_image: "assets/character.png"  # enables {{IMAGE}} (image-to-video, same character every clip)
+  # library_dir: "library"                   # your own clips as filler when generation fails
+
+captions:
+  engine: mpt             # mpt = built-in | libass = whisper word timing + highlighted-word captions
+  font: "DejaVu Sans"     # any font family installed on the machine (e.g. Montserrat, Inter)
+  # fonts_dir: "fonts"
+
+qa:
+  min_duration_s: 20
+  max_duration_s: 180
+
+publish:
+  timezone: "UTC"
+  times: ["18:00"]        # upload slots per day (local time of `timezone`)
+  max_per_day: 1
+  synthetic_media: true   # AI-content disclosure flag on the upload
+  description_footer: ""
+
+workspace: "workspace"
+words_per_minute: 150
+target_seconds: 45
+scenes: 6
